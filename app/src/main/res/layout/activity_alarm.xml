@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="16dp">
+
+    <!-- 알람 시간 -->
+    <TextView
+        android:id="@+id/alarm_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="07:00 AM"
+        android:textSize="48sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp" />
+
+    <!-- 알람 메시지 -->
+    <TextView
+        android:id="@+id/tv_alarm_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alarm_time"
+        android:layout_centerHorizontal="true"
+        android:text="알람시간 입니다~"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+
+    <!-- 알람 종료 버튼 -->
+    <Button
+        android:id="@+id/btn_dismiss_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_alarm_message"
+        android:layout_centerHorizontal="true"
+        android:text="끄기"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:id="@+id/btn_snooze_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_dismiss_alarm"
+        android:layout_centerHorizontal="true"
+        android:text="싫어요"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="16dp" />
+</RelativeLayout>
