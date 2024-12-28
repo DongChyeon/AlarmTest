@@ -6,6 +6,13 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" tools:ignore="ProtectedPermissions" />
 
@@ -16,6 +23,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cashwalk"
@@ -34,12 +42,25 @@
             android:name=".AlarmActivity"
             android:exported="true"
             android:showWhenLocked="true"
+            android:showOnLockScreen="true"
             android:turnScreenOn="true"
             android:excludeFromRecents="true" />
 
+        <!-- Alarm Receiver -->
         <receiver
             android:name=".AlarmReceiver"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.yapp.cashwalk.ALARM_TRIGGERED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Alarm Service -->
+        <service
+            android:name=".AlarmForegroundService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+        </service>
     </application>
 
 </manifest>

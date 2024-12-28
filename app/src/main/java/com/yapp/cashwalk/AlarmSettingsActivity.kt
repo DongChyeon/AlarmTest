@@ -15,7 +15,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.yapp.cashwalk.util.PermissionUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlarmSettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,10 @@ class AlarmSettingsActivity : AppCompatActivity() {
 
         checkExactAlarmPermission()
         checkAndRequestPermissions()
+
+        if (PermissionUtil.alertPermissionCheck(this)) {
+            PermissionUtil.onObtainingPermissionOverlayWindow(this)
+        }
 
         findViewById<Button>(R.id.select_sound_button).setOnClickListener {
             val intent = Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
@@ -62,7 +69,7 @@ class AlarmSettingsActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.set_test_alarm_button).setOnClickListener {
             setTestAlarm(this)
-            Toast.makeText(this, "30초 후 테스트 알람이 설정되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "10초 후 테스트 알람이 설정되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 

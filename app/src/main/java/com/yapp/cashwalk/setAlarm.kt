@@ -47,7 +47,7 @@ fun setAlarm(context: Context, triggerTime: Long) {
 }
 
 fun setTestAlarm(context: Context) {
-    val alarmTime = System.currentTimeMillis() + 30 * 1000
+    val alarmTime = System.currentTimeMillis() + 10 * 1000
     setAlarm(context, alarmTime)
 }
 
